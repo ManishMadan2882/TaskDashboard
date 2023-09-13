@@ -5,10 +5,12 @@ const { createRoute } = require('./routes/create');
 const { readRoute } = require('./routes/read');
 const { updateRoute } = require('./routes/update');
 const { deleteRoute } = require('./routes/delete');
-
+const cors = require('cors')
 const app = express();
 
 const port = 5400;
+
+app.use(cors())
 
 app.use(express.json());
 
