@@ -10,18 +10,52 @@ const initialState = {
 export const fetchContent = createAsyncThunk(
   'content/fetchContent',
   async () => {
-    const res = await axios('http://localhost:5400/api/read/all')
-    const data = await res.data
+    const res = await fetch('https://taskapi-u0zl.onrender.com/api/read/all')
+    console.log(res);
+    const data = await res.json()
     console.log(data);
     return data 
   }
 )
 
-export const contentSlice = createSlice({
+ const contentSlice = createSlice({
   name: 'content',
   initialState,
   reducers: {
-
+    //updates the task in database/server-side
+    updateState(state, action) {
+      fetch(`https://taskapi-u0zl.onrender.com/api/update/${action.payload.id}`,{
+        method:'put',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body:JSON.stringify(action.payload.newbie)
+      })
+      .then((res)=>res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err)) 
+    },
+    //creates a document in database
+    createRow(state, action) {
+      fetch('https://taskapi-u0zl.onrender.com/api/create',{
+        method:'post',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body:JSON.stringify(action.payload.newbie)
+      })
+      .then((res)=>res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err)) 
+     },
+     deleteState(state, action) {
+      fetch(`https://taskapi-u0zl.onrender.com/api/delete/${action.payload.id}`,{
+        method:'delete'
+      })
+      .then((res)=>res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err)) 
+    },
 
   },
   extraReducers: (builder) => {
@@ -39,4 +73,5 @@ export const contentSlice = createSlice({
     })
   },
 })
+export const { createRow,updateState,deleteState } = contentSlice.actions;
 export default contentSlice.reducer

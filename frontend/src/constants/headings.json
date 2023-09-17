@@ -1,0 +1,50 @@
+[
+    {
+        "label": "ENSR ID",
+        "Value": "ensrCode"
+    },
+    {
+        "label": "Case ID",
+        "Value": "caseId"
+    },
+    {
+        "label": "Case Date",
+        "Value": "caseDate"
+    },
+    {
+        "label": "Zone",
+        "Value": "zone"
+    },
+    {
+        "label": "Recieved From",
+        "Value": "receivedFrom"
+    },
+    {
+        "label": "Process Name",
+        "Value": "processName"
+    },
+    {
+        "label": "Case Name",
+        "Value": "caseName"
+    },
+    {
+        "label": "Status",
+        "Value": "status"
+    },
+    {
+        "label": "Time Elapsed",
+        "Value": "timeElapsed"
+    },
+    {
+        "label": "Date Extension",
+        "Value": "dateExtension"
+    },
+    {
+        "label": "Assigned to",
+        "Value": "assignedTo"
+    },
+    {
+        "label": "Action",
+        "Value": "action"
+    }
+]
