@@ -28,7 +28,7 @@ action} = req.body;
         action
     });
    const newone = await newbie.save();
-    res.json({msg:'saved',id:newone._id})
+    res.json({msg:'saved',newone:newone})
 
 }
 module.exports = {
