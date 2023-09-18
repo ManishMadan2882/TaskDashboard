@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node server",
+    "start": "node backend/server",
     "dev": "nodemon server"
   },
   "dependencies": {
