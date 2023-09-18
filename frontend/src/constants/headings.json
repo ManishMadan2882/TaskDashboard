@@ -1,50 +1,62 @@
 [
     {
         "label": "ENSR ID",
-        "Value": "ensrCode"
+        "Value": "ensrCode",
+        "placeholder":"1246486"
     },
     {
         "label": "Case ID",
-        "Value": "caseId"
+        "Value": "caseId",
+        "placeholder":"8-465556"
     },
     {
         "label": "Case Date",
-        "Value": "caseDate"
+        "Value": "caseDate",
+        "placeholder":"5 Sept 2023"
     },
     {
         "label": "Zone",
-        "Value": "zone"
+        "Value": "zone",
+        "placeholder":"South"
     },
     {
         "label": "Recieved From",
-        "Value": "receivedFrom"
+        "Value": "receivedFrom",
+        "placeholder":"Prateek Singh"
     },
     {
         "label": "Process Name",
-        "Value": "processName"
+        "Value": "processName",
+        "placeholder":"Provider ICU Inspection"
     },
     {
         "label": "Case Name",
-        "Value": "caseName"
+        "Value": "caseName",
+        "placeholder":"Fortis Hospital Thane, Mumbai"
     },
     {
         "label": "Status",
-        "Value": "status"
+        "Value": "status",
+        "placeholder":"Workflow ..."
     },
     {
         "label": "Time Elapsed",
-        "Value": "timeElapsed"
+        "Value": "timeElapsed",
+        "placeholder":"15d"
     },
     {
         "label": "Date Extension",
-        "Value": "dateExtension"
+        "Value": "dateExtension",
+        "placeholder":"1 Oct 2023"
     },
     {
         "label": "Assigned to",
-        "Value": "assignedTo"
+        "Value": "assignedTo",
+        "placeholder":"Ankit Kumar"
     },
     {
         "label": "Action",
-        "Value": "action"
+        "Value": "action",
+        "placeholder":"REASSIGN"
     }
 ]

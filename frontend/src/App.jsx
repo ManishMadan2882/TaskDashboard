@@ -3,10 +3,13 @@ import './App.css'
 import { fetchContent } from './reduxStore/taskSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import Tasks from './components/Tasks'
+import Loader from './components/Loader'
 
 function App() {
   const dispatch = useDispatch()
   
+  const isLoading = useSelector(state => state.isLoading)
+
   useEffect(() => {
     dispatch(fetchContent())
   }, [dispatch])
@@ -17,6 +20,7 @@ function App() {
   return (
     <>
       <Tasks/>
+      <Loader/>
     </>
   )
 }

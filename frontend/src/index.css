@@ -11,5 +11,8 @@ td,th{
     background-position-y: 40%;
     background-position-x: 90%;
     background-size: 18px;
-
 }
+.center {
+    margin: auto;
+   
+  }
