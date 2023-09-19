@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node backend/server",
-    "dev": "nodemon server"
+    "dev": "nodemon backend/server"
   },
   "dependencies": {
     "cors": "^2.8.5",
