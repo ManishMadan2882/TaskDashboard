@@ -36,7 +36,12 @@ export const fetchContent = createAsyncThunk(
       .then(data => console.log(data))
       .catch(err => console.log(err))
 
-      state.contents = [...state.contents,action.payload.newbie];
+      state.contents.map((elem,key) =>{
+        if(elem._id === action.payload.id)
+        {
+          state.contents[key] = action.payload.newbie  
+        }
+      })
       return state;
     },
     //creates a document in database
