@@ -92,3 +92,22 @@ The backend provides the following API endpoints for CRUD operations:
 
 ## Redux states
 
+### State Distribution
+* contents - Stores the data received from backend
+* isLoading -  Holds the boolean value, true if the content is not yet fetched
+* error - Holds any error if occured during retreival of the contents from API(by default null)
+
+* Illustration of Redux states
+![Redux states ](image.png)
+
+* Redux Tree 
+![Alt text](image-1.png)
+
+### Reducers
+
+* ```createRow()``` : Creates a new row with payload passed as params
+* ```updateState()``` : Updates a particular row, with unique id and updated data passed in payload
+* ```deleteState()``` : Deletes a particular row passed as unique id in the payload
+
+```fetchContent()``` : fetches the data from the server-side when the contents of the page are loading
+
