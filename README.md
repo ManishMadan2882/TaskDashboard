@@ -1,4 +1,4 @@
-# Task Dashboard Readme
+# Task Dashboard Documentation
 
 ## Table of Contents
 - [Introduction](#introduction)
