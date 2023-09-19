@@ -4,16 +4,16 @@ import deleteImg from '../assets/delete.png'
 import { deleteState } from '../reduxStore/taskSlice'
 import editImg from '../assets/edit.png'
 import items from '../constants/headings.json'
-import {Modal} from '@mui/material';
+import { Modal } from '@mui/material';
 import Form from './Form';
 import FormUpdate from './FormUpdate';
 const customStyles = {
     content: {
-      left: '50%',
-      right: 'auto',
-      width:"max-content"
+        left: '50%',
+        right: 'auto',
+        width: "max-content"
     },
-  };
+};
 
 
 const Tasks = () => {
@@ -53,7 +53,7 @@ const Tasks = () => {
                 open={modalIsOpen}
                 onClose={closeModal}
             >
-                <Form close={closeModal}/>
+                <Form close={closeModal} />
             </Modal>
             {/* Modal for updating a pre-existing row */}
             <Modal
@@ -66,51 +66,55 @@ const Tasks = () => {
 
         <h1 className='shadow-xl rounded-md text-xl text-blue-600 font-bold  m-2 px-2 py-4'>Dashboard</h1>
         <div>
-            <div className='flex justify-between p-2'>
-                <h1 className='inline text-xl text-blue-500'>Emplanelment Case Requests</h1>
+            <div className='sm:flex sm:justify-between p-2'>
+                <h1 className='block text-xl text-blue-500'>Emplanelment Case Requests</h1>
                 <div >
-                    <label>Search by: </label>
-                    <select value={param} onChange={e => setParam(e.target.value)} className='py-2 px-4 border-blue-500 text-blue-500 rounded-lg border' >
+                    <label className='block sm:inline'>Search by: </label>
+                    <select value={param} onChange={e => setParam(e.target.value)} className='sm:py-2 sm:px-4 p-1 sm:w-auto w-24  border-blue-500 text-blue-500 rounded-lg border' >
                         {
                             items.map((elem, key) => {
                                 return <option value={key}>{elem.label}</option>
                             })
                         }
                     </select>
-                    <input id='search' value={searchQuery} onChange={handleSearchChange} type='text' placeholder={`Search by ${items[param].label}`} className='mx-2 rounded-full border-2 py-2 px-4 border-blue-500 text-blue-500' />
+                    <input id='search' value={searchQuery} onChange={handleSearchChange} type='text' placeholder={`Search by ${items[param].label}`} className='mx-2 rounded-full border-2 sm:w-auto pl-4 pr-8 py-2 w-48 border-blue-500 text-blue-500' />
                 </div>
                 <div>
                     <button onClick={openModal} className='py-2 px-4 hover:bg-sky-100 border-blue-500 text-blue-500 rounded-lg border'>Create +</button>
                 </div>
             </div>
-            <table class="text-xs mt-4 w-full text-center shadow-xl  ">
-                <thead >
-                    <tr >
-                        {items.map((element, key) => {
-                            return <th className=' w-24 text-center border  bg-gray-600 text-white'>{element.label}</th>;
-                        })}
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        rows.filter((row) =>
-                            row[items[param].Value].toLowerCase().includes(searchQuery.toLowerCase())
-                        ).map((row, key) => {
-                            return (<tr className={(key % 2) ? 'bg-blue-100' : "bg-white"}>
-                                {items.map((element, key) => {
-                                    return (<td className={' border text-center border-slate-300 '}>{row[element.Value] || '_'}</td>)
-                                })}
-                                <div className='flex justify-start'>
-                                    <button onClick={() => openEditModal(row)} className='p-2 w-8 h-8 rounded m-2 bg-green-50 hover:bg-green-200 shadow-md'><img width={'40px'} src={editImg} /></button>
-                                    <button onClick={() => {
-                                        deleteRow(row._id)
-                                    }} className='p-2 rounded m-2 bg-rose-50 w-8 h-8 hover:bg-rose-200 shadow-md'><img width={'40px'} src={deleteImg} /></button>
-                                </div>
-                            </tr>);
-                        })
-                    }
-                </tbody>
-            </table>
+            <div className='overflow-auto'>
+                <table class="text-xs mt-4 w-[100vw]  text-center shadow-xl  ">
+                    <thead >
+                        <tr >
+                            {items.map((element, key) => {
+                                return <th className=' text-center border  bg-gray-600 text-white'>{element.label}</th>;
+                            })}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            rows.filter((row) =>
+                                row[items[param].Value].toLowerCase().includes(searchQuery.toLowerCase())
+                            ).map((row, key) => {
+                                return (<tr className={(key % 2) ? 'bg-blue-100' : "bg-white"}>
+                                    {items.map((element, key) => {
+                                        return (<td className={' border text-center border-slate-300 '}>{row[element.Value] || '_'}</td>)
+                                    })}
+                                    <div className='flex justify-start'>
+                                        <button onClick={() =>
+                                            openEditModal(row)}
+                                            className='p-2 w-8 h-8 rounded m-2 bg-green-50 hover:bg-green-200 shadow-md'><img width={'40px'} src={editImg} /></button>
+                                        <button onClick={() => {
+                                            deleteRow(row._id)
+                                        }} className='p-2 rounded m-2 bg-rose-50 w-8 h-8 hover:bg-rose-200 shadow-md'><img width={'40px'} src={deleteImg} /></button>
+                                    </div>
+                                </tr>);
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 };

@@ -111,4 +111,6 @@ The backend provides the following API endpoints for CRUD operations:
 
 ### Demo
 
-![Demo](image-2.png)
+![pc](image-2.png)
+
+![mobile](image-3.png)
