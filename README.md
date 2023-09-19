@@ -5,14 +5,12 @@
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-- [Frontend](#frontend)
+- [Run as localhost](#run-as-localhost)
 - [Backend](#backend)
 - [Database](#database)
-- [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
-
+- [Redux States](#redux-states)
+- [Demo](#demo)
 ## Introduction
 
 Welcome to the Task Dashboard project! This task management application provides a user-friendly interface for managing tasks with Create, Read, Update, and Delete (CRUD) operations. The frontend of this application is built using React and Redux, while the backend is developed using Node.js and Express. MongoDB is used as the database to store task-related data.
@@ -49,7 +47,7 @@ To get started with the Task Dashboard project, follow these steps:
    cd TaskDashboard
    ```
 
-## Run as Localhost
+## Run as localhost
 
 The frontend of the application is built in the /frontend/dist directory and the hosted as a static page by the server-side(backend).
 Running the /backend/server file starts the application.
@@ -109,5 +107,8 @@ The backend provides the following API endpoints for CRUD operations:
 * ```updateState()``` : Updates a particular row, with unique id and updated data passed in payload
 * ```deleteState()``` : Deletes a particular row passed as unique id in the payload
 
-```fetchContent()``` : fetches the data from the server-side when the contents of the page are loading
+```fetchContent()``` : async thunk middleware - fetches the data from the server-side when the contents of the page are loading
 
+### Demo
+
+![Demo](image-2.png)
