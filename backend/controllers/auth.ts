@@ -13,10 +13,10 @@ async function registerUser(req: Request, res: Response,next:NextFunction) {
           name,
           email,
           phoneNumber,
-          password
+          password:encryptedPassword
         }
       })
-      return res.json({msg:'Registered !',newUser})
+      next() // in case of successfull register pass on to login
     }
     catch(err){
       res.json({err,msg:'Something went wrong !'})
@@ -37,7 +37,7 @@ async function loginUser(req: Request, res: Response) {
         //create a json token
         const token = sign({
             email: email,
-            userId: userData.id,
+            id: userData.id,
             time: Date.now()
         },
             process.env.JWT_SECRET_KEY as string,

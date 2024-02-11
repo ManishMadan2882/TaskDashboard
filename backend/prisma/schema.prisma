@@ -25,7 +25,7 @@ model Assignment {
   description String
   teamSize    Int
   createdAt   DateTime  @default(now())
-  deadline    DateTime
+  deadline    DateTime?
   Faculty     Faculty?  @relation(fields: [facultyId], references: [id])
   facultyId   Int
   //project Project @relation(fields: [projects],references: [id])

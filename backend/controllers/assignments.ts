@@ -6,19 +6,28 @@ import { RequestCustom } from "../custom";
 
 const createAssignment = async (req: RequestCustom, res: Response) => {
     try {
-        const { title, description, teamSize, deadline, facultyId } = req.body;
+        const { title, description, teamSize, deadline } = req.body;
+        console.log(req.user)
+        console.log({
+            title,
+            description,
+            teamSize,
+            deadline,
+            facultyId:req.user.id
+        })
         const assignment = await Assignment.create({
             data: {
                 title,
                 description,
                 teamSize,
                 deadline,
-                facultyId
+                facultyId:req.user.id
             }
         });
+        
         res.status(201).json(assignment);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to create assignment' });
+        res.status(500).json({ msg: 'Failed to create assignment',error });
     }
 };
 
