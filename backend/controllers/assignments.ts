@@ -32,7 +32,7 @@ const createAssignment = async (req: RequestCustom, res: Response) => {
 };
 
 // Read Assignments
-const getAssignments = async (req: Request, res: Response) => {
+const getAssignments = async (req: RequestCustom, res: Response) => {
     try {
         const id = req.user.id;
         const assignments = await Assignment.findMany({
@@ -64,7 +64,6 @@ const updateAssignment = async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Failed to update assignment' });
     }
 };
-
 // Delete Assignment
 const deleteAssignment = async (req: Request, res: Response) => {
     try {

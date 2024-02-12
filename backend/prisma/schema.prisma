@@ -11,25 +11,38 @@ datasource db {
 }
 
 model Faculty {
-  id          Int          @id @default(autoincrement())
+  id          Int           @id @default(autoincrement())
   name        String
-  email       String       @unique
+  email       String        @unique
   phoneNumber String
   password    String
   Assignment  Assignment[]
+  Assignments Assignments[]
 }
 
 model Assignment {
-  id          Int       @id @default(autoincrement())
+  id          Int           @id @default(autoincrement())
   title       String
   description String
   teamSize    Int
-  createdAt   DateTime  @default(now())
+  createdAt   DateTime      @default(now())
   deadline    DateTime?
-  Faculty     Faculty?  @relation(fields: [facultyId], references: [id])
+  Faculty     Faculty?      @relation(fields: [facultyId], references: [id])
   facultyId   Int
   //project Project @relation(fields: [projects],references: [id])
   Project     Project[]
+  Assignments Assignments[]
+}
+
+model Assignments {
+  facultyId    Int
+  assignmentId Int
+
+  // Define foreign keys
+  Assignment Assignment? @relation(fields: [assignmentId], references: [id])
+  Faculty    Faculty?    @relation(fields: [facultyId], references: [id])
+
+  @@id([facultyId, assignmentId])
 }
 
 model Project {
