@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import express from 'express';
 import dotenv from 'dotenv';
+
 import authRouter from './routes/auth'
 import assignmentRouter from './routes/assignment'
 import projectRouter from './routes/project'

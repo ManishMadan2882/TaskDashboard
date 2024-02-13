@@ -24,7 +24,12 @@ const createAssignment = async (req: RequestCustom, res: Response) => {
                 facultyId:req.user.id
             }
         });
-        
+        await db.assignments.create({
+            data:{
+                facultyId:assignment.facultyId,
+                assignmentId:assignment.id
+            }
+        })
         res.status(201).json(assignment);
     } catch (error) {
         res.status(500).json({ msg: 'Failed to create assignment',error });
@@ -73,6 +78,7 @@ const deleteAssignment = async (req: Request, res: Response) => {
         });
         res.json({ message: 'Assignment deleted successfully' });
     } catch (error) {
+        console.log(error)
         res.status(500).json({ error: 'Failed to delete assignment' });
     }
 };

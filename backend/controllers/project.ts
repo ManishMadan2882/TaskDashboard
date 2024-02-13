@@ -6,6 +6,10 @@ const createProject = async (req: Request, res: Response) => {
     try {
         const { problemStatement, team } = req.body;
         const assignmentId = Number(req.params.assignmentId);
+        const assgn = await db.assignment.findUnique({where:{id:assignmentId}})
+        if(!assgn)return res.status(400).json({msg:'not found'});
+        if(assgn.teamSize < team.length)
+        return res.status(400).json({msg:'Team limit exceeded !'})
         const project = await Project.create({
             data: {
                 problemStatement,
