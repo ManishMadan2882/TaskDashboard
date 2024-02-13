@@ -37,7 +37,7 @@ const getProjects = async (req: Request, res: Response) => {
 const updateProject = async (req: Request, res: Response) => {
     try {
         const { problemStatement, team } = req.body;
-        const projectId = parseInt(req.params.id);
+        const projectId = parseInt(req.params.projectId);
         const updatedProject = await Project.update({
             where: { id: projectId },
             data: {
@@ -87,7 +87,7 @@ const updateStatus = async (req: Request, res: Response) => {
 // Delete Project
 const deleteProject = async (req: Request, res: Response) => {
     try {
-        const projectId = parseInt(req.params.id);
+        const projectId = parseInt(req.params.projectId);
         await Project.delete({
             where: { id: projectId }
         });
