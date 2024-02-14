@@ -82,12 +82,84 @@ ClOUD=mongodb://localhost:27017/task-dashboard
 ## API Endpoints
 
 The backend provides the following API endpoints for CRUD operations:
+### * Authentication
+#### Register
+HTTP Request
+```
+POST /api/auth/register HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Content-Length: 120
 
-- `GET /api/read/all`: Get a list of all tasks.
-- `POST /api/create`: Create a new task.
-- `PUT /api/update/:id`: Update an existing task by ID.
-- `DELETE /api/delete/:id`: Delete a task by ID.
+{
+    "name":"Prof. John Doe",
+    "password":"123456",
+    "email":"john@doe.com",
+    "phoneNumber":"9839032593"
+    }
+```
+HTTP Response
+```
+{
+    "success": true,
+    "msg": "authenticated",
+    "id": 7,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsInVzZXJJZCI6NywidGltZSI6MTcwNzY4NDYzNjgyNywiaWF0IjoxNzA3Njg0NjM2LCJleHAiOjE3MTAyNzY2MzZ9.hchbK0HSGrWNB2X_ufb_PyC2_BHgM0LIvaKlKknPp2E"
+}
+```
+#### Login
+HTTP Request
+```
+POST /api/auth/login HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Content-Length: 116
 
+{
+    "name":"Prof. John Doe",
+    "password":"123456",
+    "email":"john@doe.com",
+    "phoneNumber":"9839032593"
+}
+```
+HTTP Response
+```
+{
+    "success": true,
+    "msg": "authenticated",
+    "id": 7,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsInVzZXJJZCI6NywidGltZSI6MTcwNzY4NDgyMTQzMywiaWF0IjoxNzA3Njg0ODIxLCJleHAiOjE3MTAyNzY4MjF9.w3i09emNgT9vUVT-O_HlrMPqxWiRRkHgtj9Ib4RLQEY"
+}
+```
+### Assignments
+#### CREATE
+HTTP REQUEST
+```
+POST /api/assignment/create HTTP/1.1
+Host: localhost:8000
+authorization: bearer <TOKEN>
+Content-Type: application/json
+Content-Length: 144
+
+{
+     "title":"AI ML Mini project",
+     "description":"use supervised ml algorithms and do predictions on stock prices", 
+     "teamSize":3
+
+}`
+```
+HTTP RESPONSE
+```
+{
+    "id": 1,
+    "title": "AI ML Mini project",
+    "description": "use supervised ml algorithms and do predictions on stock prices",
+    "teamSize": 3,
+    "createdAt": "2024-02-11T21:15:17.269Z",
+    "deadline": null,
+    "facultyId": 7
+}
+```
 ## Redux states
 
 ### State Distribution

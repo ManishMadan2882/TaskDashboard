@@ -25,6 +25,7 @@ async function registerUser(req: Request, res: Response,next:NextFunction) {
 //create session for existing users
 async function loginUser(req: Request, res: Response) {
     const { email, password } = req.body;
+    console.log(email,password)
     const userData = await db.faculty.findUnique({
       where: { email:email },
     });
@@ -58,13 +59,21 @@ async function loginUser(req: Request, res: Response) {
         });
 }
 //identifies the current user
-function getUser(req: Request, res: Response) {
+async function getUser(req: Request, res: Response) {
     
+   try{
     const { id } = req.user;
-
-    db.faculty.findUnique({
+    if(!id)
+    return res.status(404).json({error:'id is not defined',succes:false})
+    const user = await db.faculty.findUnique({
       where:{id:id}
     })
+    
+    res.json({...user,...{success:true}})
+   }
+   catch(error){
+    res.status(400).json({error,success:false})
+   }
 }
 export {
     registerUser,

@@ -14,7 +14,7 @@ model Faculty {
   id          Int           @id @default(autoincrement())
   name        String
   email       String        @unique
-  phoneNumber String
+  phoneNumber String?
   password    String
   Assignment  Assignment[]
   Assignments Assignments[]

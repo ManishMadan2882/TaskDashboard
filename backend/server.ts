@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import express from 'express';
 import dotenv from 'dotenv';
-
+import cors from 'cors'
 import authRouter from './routes/auth'
 import assignmentRouter from './routes/assignment'
 import projectRouter from './routes/project'
@@ -11,6 +11,8 @@ dotenv.config();
 const prisma = new PrismaClient();
 
 const app = express();
+
+app.use(cors())
 
 const port: number = Number(process.env.PORT) || 8000;
 
