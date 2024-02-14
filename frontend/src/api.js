@@ -61,7 +61,70 @@ export const fetchAssignments = async () => {
         console.log(data);
         return data;
     }
-    catch(err){
+    catch (err) {
         return []
+    }
+}
+export const fetchProjects = async (assignmentId) => {
+    try {
+        const response = await fetch(api + '/project/' + assignmentId);
+        const data = await response.json();
+        console.log(data);
+        return data;
+    }
+    catch (err) {
+        return []
+    }
+}
+export const fetchAssignment = async (assignmentId) => {
+    try {
+        const response = await fetch(api + '/assignment/' + assignmentId);
+        const data = await response.json();
+        return data;
+    }
+    catch (err) {
+        return {}
+    }
+}
+export const createAssignment = async (payload) => {
+    try {
+        const response = await fetch(api + '/assignment/create', {
+            method: 'post',
+            headers: { ...headers, ...authHeader },
+            body: JSON.stringify(payload)
+        })
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+export const changeStatus = async (assignmentId,projectId,status) => {
+    try {
+        const response = await fetch(api + '/project/action/'+assignmentId+'/'+projectId, {
+            method: 'post',
+            headers: { ...headers, ...authHeader },
+            body: JSON.stringify({status})
+        })
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+export const createProject = async (payload, assignmentId) => {
+    try {
+        const response = await fetch(api + '/project/create/' + assignmentId, {
+            method: 'post',
+            headers: { ...headers, ...authHeader },
+            body: JSON.stringify(payload)
+        })
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.log(error)
     }
 }

@@ -9,6 +9,8 @@ import Register from './components/Register'
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 import { fetchUser } from './api'
 import Dashboard from './components/Dashboard'
+import ProjectForm from './components/ProjectForm'
+import Submissions from './components/Submissions'
 function App() {
   const dispatch = useDispatch()
   const isLoading = useSelector(state => state.isLoading)
@@ -35,6 +37,8 @@ function App() {
           <Route path='/' element={<Dashboard user={auth}/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/form/:id" element={<ProjectForm/>} />
+          <Route path="/submissions/:id" element={<Submissions/>} />
         </Routes>
       </Router>
     </>
