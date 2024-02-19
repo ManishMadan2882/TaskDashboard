@@ -7,7 +7,7 @@ const router = express.Router()
 router.route('/create/:assignmentId').post( createProject)
 router.route('/delete/:projectId').delete( deleteProject)
 router.route('/edit/:projectId').patch(updateProject)
-router.route('/action/:assignmentId/:projectId').patch(authenticateToken,updateStatus)
+router.route('/action/:assignmentId/:projectId').post(authenticateToken,updateStatus)
 router.route('/:assignmentId').get( getProjects)
 
 export default router

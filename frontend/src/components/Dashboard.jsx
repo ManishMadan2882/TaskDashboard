@@ -22,7 +22,7 @@ const Dashboard = ({ user }) => {
       >
         <AssignmentForm setAssignments={setAssignments} assignments={assignments}/>
       </Modal>
-      <div className='bg-blue-50 h-[88vh]'>
+      <div className='bg-blue-50 min-h-[88vh]'>
         <div className=''>
           <h1 className='p-2 inline-block m-2 text-xl font-medium text-blue-600'>Assignments created by you</h1>
           <button onClick={() => setOpen(true)} className='p-2 m-4 float-right bg-blue-500 rounded-lg text-gray-200'>Create new +</button>

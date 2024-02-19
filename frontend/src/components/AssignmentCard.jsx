@@ -13,8 +13,8 @@ const AssignmentCard = ({assignment}) => {
                         className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                         {assignment.title}
                     </h5>
-                    <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-                       {assignment.description}
+                    <p className="mb-4 h-[200px] text-base text-neutral-600 dark:text-neutral-200">
+                       {(assignment.description+(assignment.description.length>250 ? '...':"")).slice(0,250)}
                     </p>
                     <div className='flex justify-between absoulute -bottom-2'>
                         <a

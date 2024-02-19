@@ -12,7 +12,9 @@ const prisma = new PrismaClient();
 
 const app = express();
 
-app.use(cors())
+app.use(cors({
+    origin:'*'
+}))
 
 const port: number = Number(process.env.PORT) || 8000;
 

@@ -34,7 +34,7 @@ const ProjectForm = () => {
         ).then((data) => {
             if (data.id)
                 toast.success('Submited !')
-            else toast.error(data.msg)
+            else toast.error(data.error)
         })
     }
     return (

@@ -11,7 +11,7 @@ const createAssignment = async (req: RequestCustom, res: Response) => {
         console.log({
             title,
             description,
-            teamSize,
+            teamSize:Number(teamSize),
             deadline,
             facultyId:req.user.id
         })
@@ -19,8 +19,8 @@ const createAssignment = async (req: RequestCustom, res: Response) => {
             data: {
                 title,
                 description,
-                teamSize,
-                deadline,
+                teamSize:Number(teamSize),
+                deadline:new Date(deadline),
                 facultyId:req.user.id
             }
         });
@@ -32,6 +32,8 @@ const createAssignment = async (req: RequestCustom, res: Response) => {
         })
         res.status(201).json(assignment);
     } catch (error) {
+        console.log(error);
+        
         res.status(500).json({ msg: 'Failed to create assignment',error });
     }
 };
@@ -42,6 +44,17 @@ const getAssignments = async (req: RequestCustom, res: Response) => {
         const id = req.user.id;
         const assignments = await Assignment.findMany({
             where: { facultyId: req.user.id },
+        });
+        res.json(assignments);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch assignments' });
+    }
+};
+// Read Assignments
+const getAssignment = async (req: RequestCustom, res: Response) => {
+    try {
+        const assignments = await Assignment.findUnique({
+            where: {id:Number(req.params.id) },
         });
         res.json(assignments);
     } catch (error) {
@@ -87,5 +100,6 @@ export {
     createAssignment,
     getAssignments,
     updateAssignment,
+    getAssignment,
     deleteAssignment
 };
